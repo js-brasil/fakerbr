@@ -1,0 +1,9 @@
+.github/
+.vscode/
+.idea/
+docs/
+node_modules
+test/
+.travis.yml
+tsconfig.json
+tslint.json

@@ -1,0 +1,51 @@
+{
+  "name": "fakerbr",
+  "version": "0.0.1",
+  "description": "Javascript Faker para Brasil (cpf, cnpj...)",
+  "main": "dist/fakerbr.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "npm run build & onchange 'src/**/*.ts' '*.ts' -- npm run build",
+    "watch:test": "onchange 'src/**/*.ts' '*.ts' -- npm run test",
+    "clean": "find ./src -name \"*.js\" -type f -delete & rm *.js & rm -rf dist/ && mkdir dist ",
+    "test": "mocha -r ts-node/register test/**.ts",
+    "browserify": "npx simplifyify index.ts -s fakerbr --outfile dist/fakerbr.js",
+    "browserify:uglify": "npx simplifyify index.ts -s fakerbr --minify --outfile dist/fakerbr.js",
+    "manual:compile": "tsc && tsc addons.ts && rm src/*.js && rm src/addons/*.js",
+    "dist": "npm run build && npm run browserify && cp fakerbr.js dist/",
+    "a:build": "tsc -p addons",
+    "a:browserify": "browserify dist/addons/addons.js --standalone fakerbr-addons -o fakerbr-addons.js",
+    "a:dist": "npm run a:build && npm run a:browserify && cp fakerbr-addons.js dist/",
+    "publishnpm": "npm run dist && npm publish",
+    "start": "cd docs && http-server",
+    "demo": "cp fakerbr.js docs/ && npm run start",
+    "demo-build": "npm run dist && cp fakerbr.js docs/",
+    "demo-full": "npm run dist && npm run demo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariohmol/fakerbr.git"
+  },
+  "author": "Mario Mol <mariohmol@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mariohmol/fakerbr/issues"
+  },
+  "homepage": "https://github.com/mariohmol/fakerbr#readme",
+  "dependencies": {
+    "js-brasil": "^2.5.3",
+    "randexp": "^0.5.3",
+    "text-mask-addons": "^3.8.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.5",
+    "@types/mocha": "^5.2.5",
+    "chai": "^4.1.2",
+    "codelyzer": "^5.2.0",
+    "mocha": "^8.3.2",
+    "onchange": "^7.1.0",
+    "simplifyify": "^8.0.4",
+    "ts-node": "^7.0.1",
+    "typescript": "~4.0.2"
+  }
+}
