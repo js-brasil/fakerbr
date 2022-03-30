@@ -1,5 +1,5 @@
 {
-  "name": "fakerbr",
+  "name": "fakerbrasil",
   "version": "0.0.1",
   "description": "Javascript Faker para Brasil (cpf, cnpj...)",
   "main": "dist/fakerbr.js",
@@ -12,7 +12,7 @@
     "browserify": "npx simplifyify index.ts -s fakerbr --outfile dist/fakerbr.js",
     "browserify:uglify": "npx simplifyify index.ts -s fakerbr --minify --outfile dist/fakerbr.js",
     "manual:compile": "tsc && tsc addons.ts && rm src/*.js && rm src/addons/*.js",
-    "dist": "npm run build && npm run browserify && cp fakerbr.js dist/",
+    "dist": "npm run build && npm run browserify",
     "a:build": "tsc -p addons",
     "a:browserify": "browserify dist/addons/addons.js --standalone fakerbr-addons -o fakerbr-addons.js",
     "a:dist": "npm run a:build && npm run a:browserify && cp fakerbr-addons.js dist/",
