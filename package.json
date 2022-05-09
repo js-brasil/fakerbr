@@ -1,5 +1,5 @@
 {
-  "name": "fakerbrasil",
+  "name": "@js-brasil/fakerbr",
   "version": "0.0.1",
   "description": "Javascript Faker para Brasil (cpf, cnpj...)",
   "main": "dist/fakerbr.js",
@@ -16,7 +16,7 @@
     "a:build": "tsc -p addons",
     "a:browserify": "browserify dist/addons/addons.js --standalone fakerbr-addons -o fakerbr-addons.js",
     "a:dist": "npm run a:build && npm run a:browserify && cp fakerbr-addons.js dist/",
-    "publishnpm": "npm run dist && npm publish",
+    "publishnpm": "npm run dist && npm publish --access public",
     "start": "cd docs && http-server",
     "demo": "cp fakerbr.js docs/ && npm run start",
     "demo-build": "npm run dist && cp fakerbr.js docs/",
@@ -24,14 +24,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mariohmol/fakerbr.git"
+    "url": "git+https://github.com/js-brasil/fakerbr.git"
   },
-  "author": "Mario Mol <mariohmol@gmail.com>",
+  "author": "js-brasil <gerador@geradorbrasileiro.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mariohmol/fakerbr/issues"
+    "url": "https://github.com/js-brasil/fakerbr/issues"
   },
-  "homepage": "https://github.com/mariohmol/fakerbr#readme",
+  "homepage": "https://github.com/js-brasil/fakerbr#readme",
   "dependencies": {
     "js-brasil": "^2.5.3",
     "randexp": "^0.5.3",
