@@ -1,9 +1,147 @@
 import { allNumbersAreSame } from './utils';
 import { BigObject } from './interfaces';
+import { MaskType } from 'js-brasil/src/interfaces';
 
 /**
  * BASED ON https://github.com/gammasoft/ie/
  */
+
+ export const MASKSIE: BigObject<MaskType> = {
+  ac: {
+    text: '01.004.823/001-12',
+    textMask: ['0', '1', '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, '-', /\d/, /\d/]
+  },
+  al: {
+    text: '240000048',
+    textMask: ['2', '4', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/]
+  },
+  am: {
+    text: '04.145.871-0',
+    textMask: [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/]
+  },
+  ap: {
+    text: '240000048',
+    textMask: ['0', '3', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/]
+  },
+  ba: {
+    text: '1234567-48',
+    textMask: [/\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/],
+    textMaskFunction: function mask(userInput: any) {
+      const numberLength = getSizeNumbers(userInput);
+      if (!userInput || numberLength > 8) {
+        return [/\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+      } else {
+        return [/\d/, /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+      }
+    }
+  },
+  ce: {
+    text: '06.000001-5',
+    textMask: [/\d/, /\d/, '.', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/]
+  },
+  df: {
+    text: '06 000001 123-55',
+    textMask: ['0', /[ 7 | 8 ]/, ' ', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/]
+  },
+  es: {
+    text: '082.560.67-6',
+    textMask: [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, '-', /\d/]
+  },
+  go: {
+    text: '06.000.001-5',
+    textMask: ['1', /[ 0 | 1 | 5]/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/]
+  },
+  ma: {
+    text: '12.104.376-2',
+    textMask: ['1', '2', '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/]
+  },
+  mg: {
+    text: '001.819.263/0048',
+    textMask: [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]
+  },
+  ms: {
+    text: '001819263',
+    textMask: ['2', '8', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/]
+  },
+  mt: {
+    text: '0018192630-1',
+    textMask: [/\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/]
+  },
+  pa: {
+    text: '06-000001-5',
+    textMask: ['1', '5', '-', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/]
+  },
+  pb: {
+    text: '06000001-5',
+    textMask: [/\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/]
+  },
+  pe: {
+    text: '0192310-24',
+    textMask: [/\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/]
+  },
+  pi: {
+    text: '19.301.656-7',
+    textMask: [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/]
+  },
+  pr: {
+    text: '19301656-78',
+    textMask: [/\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/]
+  },
+  rj: {
+    text: '20.040.04-1',
+    textMask: [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, '-', /\d/]
+  },
+  rn: {
+    text: '20.040.040-1',
+    textMask: ['2', '0', '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/],
+    textMaskFunction: function mask(userInput: any) {
+      const numberLength = getSizeNumbers(userInput);
+
+      if (!userInput || numberLength > 9) {
+        return ['2', '0', '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+      } else {
+        return ['2', '0', '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/];
+      }
+    }
+  },
+  ro: {
+    text: '0000000012345-1',
+    textMask: [/\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/]
+  },
+  rr: {
+    text: '24006628-1',
+    textMask: ['2', '4', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/]
+  },
+  rs: {
+    text: '024/0440013',
+    textMask: [/\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/]
+  },
+  sc: {
+    text: '271.234.563',
+    textMask: [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/]
+  },
+  se: {
+    text: '27123456-3',
+    textMask: [/\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/]
+  },
+  sp: {
+    text: '114.814.878.119',
+    textMask: [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/]
+  },
+  to: {
+    text: '11 81 4878119',
+    textMask: [ /\d/, /\d/, ' ', /[01 | 02 | 03 | 99 ]/, ' ', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/]
+  },
+};
+
+function getSizeNumbers(userInput: string) {
+  const numbers: any = userInput.match(/\d/g);
+  let numberLength = 0;
+  if (numbers) {
+    numberLength = numbers.join('').length;
+  }
+  return numberLength
+}
 
 
 export const generateInscricaoEstadual: BigObject<Function> = {
@@ -345,7 +483,7 @@ export const generateInscricaoEstadual: BigObject<Function> = {
       base = valor.substring(3, 8);
       digito = substracaoPor11SeMaiorQue2CasoContrario0(mod(base));
 
-      return valor === valor.substring(0, 3) + base + digito;
+      return valor.substring(0, 3) + base + digito;
     } else if (tamanhoE(valor, 14)) {
       base = primeiros(valor, 13);
       resultadoMod = mod(base);

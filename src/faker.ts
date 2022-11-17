@@ -1,7 +1,7 @@
 import { utilsBr, validateBr } from 'js-brasil';
 import { randexp } from 'randexp';
 import { validate_placa } from './placa';
-import { generateInscricaoEstadual } from './inscricaoestadual';
+import { generateInscricaoEstadual, MASKSIE } from './inscricaoestadual';
 import {
   create_cpf, create_cnpj, create_titulo, create_renavam, create_cnh,
   create_cns, create_ect, create_certidao, create_aih, create_pispasep, create_cnhespelho, create_renachestadual, create_renachseguranca
@@ -14,7 +14,7 @@ import { faker_iptu } from './iptu/create';
 import { EstadosType } from './estados';
 // import cnaes from '../addons/cnaes';
 const CEPRange: any = {}
-const { MASKS, MASKSIE } = utilsBr;
+const { MASKS } = utilsBr;
 const { cns: validate_cns, titulo: validate_titulo } = validateBr; // TODO: CEPRange
 
 function aih(uf = 35, ano = 19, tipo = 1, seq: number | null = null) {

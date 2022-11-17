@@ -1,6 +1,6 @@
 {
   "name": "@js-brasil/fakerbr",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Javascript Faker para Brasil (cpf, cnpj...)",
   "main": "dist/fakerbr.js",
   "scripts": {

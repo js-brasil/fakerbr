@@ -162,10 +162,18 @@ describe('Faker test', () => {
   });
 
 
-  it('Inscrição Estadual - TODO', () => {
-    // expect(fakerBr.inscricaoestadual()).to.exist;
-    // const inscricaoestadual = fakerBr.inscricaoestadual();
-    // expect(validateBr.inscricaoestadual(inscricaoestadual)).to.be.true;
+  it('Inscrição Estadual', () => {
+    const estados = ['ac', 'al', 'am', 'ap', 'ba', 'ce', 'df', 'es', 'go', 'ma',
+      'mg', 'ms', 'mt', 'pa', 'pb', 'pe', 'pi', 'pr', 'rj', 'rn', 'ro', 'rr', 'rs',
+      'sc', 'se', 'sp', 'to', 
+    ];
+     
+    estados.forEach(estado => {
+      expect(fakerBr.inscricaoestadual(estado)).to.exist;
+      const inscricaoestadual = fakerBr.inscricaoestadual(estado);
+      expect(validateBr.inscricaoestadual(inscricaoestadual)).to.be.true;
+    });    
+    
   });
 
 
