@@ -9,7 +9,7 @@ Site, Telefone , Time (data/hora), Título de Eleitor , Veículo
 [![Build Status](https://travis-ci.org/js-brasil/fakerbr.svg?branch=master)](https://travis-ci.org/js-brasil/fakerbr)
 
 
-`npm i fakerbr` 
+`npm i @js-brasil/fakerbr` 
 
  ou 
 
